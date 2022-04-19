@@ -1,5 +1,6 @@
 # redhat-coreos-custom-iso
 
+Custom RedHat CoreOS live ISO that setup the core user with Vagrant ssh public key in initramfs for Vagrant to ssh when booting the box and still be able to run the coreos-installer and install Openshift on the system.
 
 #### Download the Butane image:
 ```sh
