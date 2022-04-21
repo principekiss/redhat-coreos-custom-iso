@@ -1,18 +1,16 @@
 {
   "builders": [
     {
-      "boot_command": "sudo -i <enter>localectl set-keymap fr<enter>",
       "boot_wait": "{{user `boot_wait`}}",
       "communicator": "ssh",
       "ssh_private_key_file": "~/.vagrant.d/insecure_private_key",
       "ssh_username": "core",
-      "ssh_password": "",
       "ssh_port": 22,
       "cpus": "{{ user `cpus` }}",
-      "disable_shutdown": true,
+      "disable_shutdown": false,
       "guest_additions_mode": "attach",
       "guest_os_type": "RedHat_64",
-      "iso_interface": "sata",
+      "iso_interface": "ide",
       "headless": "{{ user `headless` }}",
       "iso_checksum": "sha256:{{ user `iso_checksum` }}",
       "iso_url": "{{ user `iso_url` }}",
@@ -21,7 +19,7 @@
       "virtualbox_version_file": ".vbox_version",
       "guest_additions_path": "VBoxGuestAdditions.iso",
       "vm_name": "{{user `vm_name`}}",
-      "shutdown_command": "sudo -S shutdown -P now",
+      "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
       "ssh_wait_timeout": "600s",
       "bundle_iso": true,
       "vboxmanage": [
@@ -44,16 +42,16 @@
     ]
   ],
   "variables": {
-    "iso_checksum": "0100fc6e60ff4462137ae4ba9b6ed09d908b687f166ed6a4a054892c5796d4f6",
+    "iso_checksum": "3ce5e5593c8c8f1e8075d21e0ece2821ba1986d6df3e7638bfa0dc5af8a65b91",
     "access_token": "{{env `VAGRANT_CLOUD_TOKEN`}}",
     "boot_wait": "30s",
-    "box_tag": "sudo_killself/unicorni",
+    "box_tag": "sudo_killself/unicornini",
     "cpus": "2",
     "headless": "false",
-    "iso_url": "/home/marioushka/liveISO/rhcos-live.x86_64.iso",
+    "iso_url": "../rhcos-live.x86_64.iso",
     "memory": "2000",
     "version": "4.9.0",
-    "vm_name": "unicorni"
+    "vm_name": "unicornini"
   }
 }
 

@@ -4,7 +4,7 @@ Vagrant.configure("2") do |config|
   private_key_path = File.expand_path('~/.vagrant.d/insecure_private_key')
 
   config.vm.provider :virtualbox do |vb|
-    vb.check_guest_additions = false
+    vb.check_guest_additions = true
   end
 
   config.vm.synced_folder ".", "/vagrant", disabled: true
