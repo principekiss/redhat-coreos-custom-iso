@@ -19,6 +19,8 @@
       "iso_url": "{{ user `iso_url` }}",
       "type": "virtualbox-iso",
       "bundle_iso": true,
+      "guest_additions_path": "VBoxGuestAdditions_{{ .Version }}.iso",
+      "virtualbox_version_file": ".vbox_version",
       "vboxmanage": [
         [ "modifyvm", "{{ .Name }}", "--natpf1", "guestssh,tcp,,2222,,22" ], [ "modifyvm", "{{ .Name }}", "--natpf1", "guesthttp,tcp,,8080,,80" ], [ "modifyvm", "{{ .Name }}", "--natpf1", "guesthttps,tcp,,8443,,443" ]
   ]}],
@@ -42,13 +44,13 @@
     "iso_checksum": "3ce5e5593c8c8f1e8075d21e0ece2821ba1986d6df3e7638bfa0dc5af8a65b91",
     "access_token": "{{env `VAGRANT_CLOUD_TOKEN`}}",
     "boot_wait": "30s",
-    "box_tag": "sudo_killself/redhatcos",
+    "box_tag": "sudo_killself/test1000",
     "cpus": "2",
     "headless": "false",
     "iso_url": "../rhcos-live.x86_64.iso",
     "memory": "2000",
     "version": "4.9.0",
-    "vm_name": "redhatcos"
+    "vm_name": "test1000"
   }
 }
 
