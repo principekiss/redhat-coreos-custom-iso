@@ -1,26 +1,23 @@
 {
   "builders": [
-    {
+    { 
       "boot_wait": "{{user `boot_wait`}}",
       "communicator": "ssh",
       "ssh_private_key_file": "~/.vagrant.d/insecure_private_key",
       "ssh_username": "core",
       "ssh_port": 22,
+      "ssh_wait_timeout": "30m",
+      "vm_name": "{{user `vm_name`}}",
+      "memory": "{{ user `memory` }}",
       "cpus": "{{ user `cpus` }}",
       "disable_shutdown": false,
-      "guest_additions_mode": "attach",
+      "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
       "guest_os_type": "RedHat_64",
-      "iso_interface": "ide",
       "headless": "{{ user `headless` }}",
+      "iso_interface": "ide",
       "iso_checksum": "sha256:{{ user `iso_checksum` }}",
       "iso_url": "{{ user `iso_url` }}",
-      "memory": "{{ user `memory` }}",
       "type": "virtualbox-iso",
-      "virtualbox_version_file": ".vbox_version",
-      "guest_additions_path": "VBoxGuestAdditions.iso",
-      "vm_name": "{{user `vm_name`}}",
-      "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
-      "ssh_wait_timeout": "600s",
       "bundle_iso": true,
       "vboxmanage": [
         [ "modifyvm", "{{ .Name }}", "--natpf1", "guestssh,tcp,,2222,,22" ], [ "modifyvm", "{{ .Name }}", "--natpf1", "guesthttp,tcp,,8080,,80" ], [ "modifyvm", "{{ .Name }}", "--natpf1", "guesthttps,tcp,,8443,,443" ]
@@ -45,13 +42,13 @@
     "iso_checksum": "3ce5e5593c8c8f1e8075d21e0ece2821ba1986d6df3e7638bfa0dc5af8a65b91",
     "access_token": "{{env `VAGRANT_CLOUD_TOKEN`}}",
     "boot_wait": "30s",
-    "box_tag": "sudo_killself/unicornini",
+    "box_tag": "sudo_killself/redhatcos",
     "cpus": "2",
     "headless": "false",
     "iso_url": "../rhcos-live.x86_64.iso",
     "memory": "2000",
     "version": "4.9.0",
-    "vm_name": "unicornini"
+    "vm_name": "redhatcos"
   }
 }
 
